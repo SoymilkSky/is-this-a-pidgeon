@@ -11,7 +11,8 @@ class IsPidgeon extends React.Component {
       show: false,
       loaded: false,
       tested: false,
-      pidgeonResult: null
+      pidgeonResult: null,
+      pidgeonPercent: null
     };
     this.imgRef = React.createRef();
     this.isPidgeonTest = this.isPidgeonTest.bind(this);
@@ -28,8 +29,10 @@ class IsPidgeon extends React.Component {
         this.setState({ model: predictions, tested: true });
         if (predictions[0].className === 'partridge') {
           this.setState({ pidgeonResult: true })
+          this.setState({ pidgeonPercent: predictions[0].probability})
         } else {
           this.setState({ pidgeonResult: false})
+          this.setState({ pidgeonPercent: predictions[0].probability})
         }
         // console.log( predictions[0].className === 'partridge' ? 'This is a Pidgeon' : 'This is not a Pidgeon');
         // console.log(predictions[0].className === 'partridge' ? 'Pidgeon Confidence: ' + predictions[0].probability : '');
@@ -46,7 +49,7 @@ class IsPidgeon extends React.Component {
     if (this.state.birbName.length === 0 || this.state.birbName === undefined || this.state.birbName === null) {
       window.alert('please enter a name');
     } else {
-      axios.post('api/pidgeons', {name: this.state.birbName, url: this.state.imgUrl, isPidgeon: this.state.pidgeonResult})
+      axios.post('api/pidgeons', {name: this.state.birbName, url: this.state.imgUrl, isPidgeon: this.state.pidgeonResult, pidgeonPercent: this.state.pidgeonPercent})
         .then(res => console.log(res))
         .catch(err => console.log(err))
     }

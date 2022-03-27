@@ -24,18 +24,26 @@ class BirdList extends React.Component {
       .catch(err => console.log(err))
   }
 
-  patchBird(e, _id, isPidgeon) {
+  patchBird(e, bird) {
     if (e.target.id === 'name') {
       let change = prompt('please enter an edit');
       if (change.length === 0 || change === undefined || change === null) {
         window.alert('please enter an edit!');
       } else {
-        axios.patch('api/pidgeons', { _id, [e.target.id] : change})
+        axios.patch('api/pidgeons', { _id: bird._id, [e.target.id] : change})
           .then(() => this.loadFromServer())
           .catch(err => console.log(err))
       }
+    } else if (e.target.id === 'like') {
+      if (bird.isPidgeon !== true) {
+        window.alert('this is not a pidgeon, you can\'t like this prediction')
+      } else {
+        axios.patch('/api/pidgeons', { _id: bird._id, liked: !bird.liked})
+        .then(() => this.loadFromServer())
+        .catch(err => console.log(err))
+      }
     } else {
-      axios.patch('api/pidgeons', { _id, isPidgeon: !isPidgeon})
+      axios.patch('api/pidgeons', { _id: bird._id, isPidgeon: !bird.isPidgeon})
         .then(() => this.loadFromServer())
         .catch(err => console.log(err))
     }
@@ -60,11 +68,13 @@ class BirdList extends React.Component {
                 </div>
                 <div className="entry-text">
                   <div className="entry-name">
-                    <h3 id="name" onClick={e => this.patchBird(e, bird._id, bird.isPidgeon)}>{bird.name}</h3>
+                    <h3 id="name" onClick={e => this.patchBird(e, bird)}>{bird.name}</h3>
                   </div>
                   <div className="entry-category">
-                    <h4 id="isPidgeon" onClick={e => this.patchBird(e, bird._id, bird.isPidgeon)}>{bird.isPidgeon ? 'Is pidgeon' : 'Not a pidgeon'}</h4>
+                    <h4 id="isPidgeon" onClick={e => this.patchBird(e, bird)}>{bird.isPidgeon ? 'Is pidgeon' : 'Not a pidgeon'}</h4>
+                    <h4 id="percent">Confidence: {bird.percent.$numberDecimal}</h4>
                   </div>
+                  <button id="like" onClick={e => this.patchBird(e, bird)}>{bird.liked ? 'I HATE this bird' : 'I LOVE this bird'}</button>
                   <button onClick={() => this.deleteBird(bird._id)}>Delete This Entry</button>
                 </div>
               </div>

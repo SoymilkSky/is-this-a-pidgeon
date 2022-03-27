@@ -66,9 +66,9 @@ Not a Pidgeon:
 ### Level 4
 ### Sort Prediction Tests
 
-- [] - Refactor your Mongoose schema to save the percentage confidence provided by the `isPidgeonTest` function and a `liked` status.
-- [] - Implement a second `PATCH` route that allows users to like a specific prediction test.
-- [] - Add a `I love this bird` button to prediction test entries that will set `liked` to true. Users should not be able to `like` prediction tests that are not pidgeons.
+- [x] - Refactor your Mongoose schema to save the percentage confidence provided by the `isPidgeonTest` function and a `liked` status.
+- [x] - Implement a second `PATCH` route that allows users to like a specific prediction test.
+- [x] - Add a `I love this bird` button to prediction test entries that will set `liked` to true. Users should not be able to `like` prediction tests that are not pidgeons.
 - [] - Implement a sort on your `BirdList` that will display prediction tests that have a higher pidgeon confidence higher in the list.
 - [] - Implement a sort on your `BirdList` that will display prediction tests that are liked top of the list, regardless of pidgeon confidence.
 - [] - Implement a `PercentagePidgeon` component that will display on the `BirdList` the percentage of prediction tests that are pidgeons. This percentage should automatically update when new tests are performed or a test is edited.

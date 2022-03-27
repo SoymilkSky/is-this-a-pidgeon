@@ -11,7 +11,9 @@ connect();
 const pidgeonSchema = new mongoose.Schema({
   name: String,
   url: {type: String, unique: true, dropDups: true},
-  isPidgeon: Boolean
+  isPidgeon: Boolean,
+  percent: mongoose.Types.Decimal128,
+  liked: Boolean
 });
 
 const Pidgeon = mongoose.model('Pidgeon', pidgeonSchema);
@@ -22,7 +24,9 @@ module.exports = {
     return new Pidgeon({
       name: pidgeon.name,
       url: pidgeon.url,
-      isPidgeon: pidgeon.isPidgeon
+      isPidgeon: pidgeon.isPidgeon,
+      percent: pidgeon.pidgeonPercent,
+      liked: false
     })
       .save()
   },
