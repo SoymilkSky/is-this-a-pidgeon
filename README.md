@@ -41,8 +41,8 @@ Not a Pidgeon:
 ### Level 1
 ### Load Prediction Data
 
-- [] - Refactor the `IsPidgeon` component to accept an image url. The image URL should automatically fill the `<img>` tag and the image should appear on the page when a URL is entered.
-- [] - Add functionality to the `IsPidgeon` component that will tell the user whether a given image is or is not a pidgeon using the output from the `isPidgeonTest` function that is provided.
+- [x] - Refactor the `IsPidgeon` component to accept an image url. The image URL should automatically fill the `<img>` tag and the image should appear on the page when a URL is entered.
+- [x] - Add functionality to the `IsPidgeon` component that will tell the user whether a given image is or is not a pidgeon using the output from the `isPidgeonTest` function that is provided.
 - [] - Create a list in the `BirdList` component that dynamically renders images that have been tested. (Use the data from sampleData.js for now).
 - [] - Allow users to switch between the two views using the `Show me my Birds` and `Is this a Pidgeon?` buttons in the navbar:
   - [] - `Pidgeon Tester` displays the `IsPidgeon` component and allows users to get a prediction on whether an image is a pidgeon or not.
