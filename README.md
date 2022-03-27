@@ -54,7 +54,7 @@ Not a Pidgeon:
 - [x] - Implement a `POST` route that allows users to save prediction test results to a Mongo database.
 - [x] - Implement a `GET` route that allows users to load prediction test results from a Mongo database.
 - [x] - Refactor the `BirdList` component so that it shows prediction test results that are loaded from the database.
-- [] - There should be no duplicate URLs in the database.
+- [x] - There should be no duplicate URLs in the database.
 
 ### Level 3
 ### Edit Image Predictions
